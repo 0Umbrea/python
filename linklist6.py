@@ -1,4 +1,4 @@
-#练习题目6.1
+#练习题目6.1，含有bug，还未想明白
 class linknode:
     def __init__(self,val=0,next=None,random=None):
         self.val=val
