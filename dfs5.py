@@ -1,4 +1,3 @@
-
 def square(grid):
     x=[0]
     count=0
@@ -10,24 +9,21 @@ def square(grid):
             return 0
         grid[i][j]=0
         count+=1 
-        if i>=n-1 or j>=m-1:
-            dfs(i + 1, j)
-            dfs(i, j + 1)
-            dfs(i - 1, j)
-            dfs(i, j - 1)
-        else:
-            if grid[i+1][j]==1 or grid[i-1][j]==1 or grid[i][j+1]==1 or grid[i][j-1]==1:
-                dfs(i + 1, j)
-                dfs(i, j + 1)
-                dfs(i - 1, j)
-                dfs(i, j - 1)
-            else:
-                x.append(count)
-                count=0
+        dfs(i + 1, j)
+        dfs(i, j + 1)
+        dfs(i - 1, j)
+        dfs(i, j - 1)
+        return count
+
     for i in range(len(grid)):
         for j in range(len(grid[0])):
             if grid[i][j]==1:
-                dfs(i,j)
+                x.append(dfs(i,j))
+    for i in range(len(x)):
+        if i<len(x)-1:
+            x[i]=x[i+1]-x[i]
+        else:
+            x.pop(i)
     return x
 
 grid = [[0,0,1,0,0,0,0,1,0,0,0,0,0],
